@@ -1,0 +1,122 @@
+/** Module level CSS */
+
+.Tile {
+	border: 2px solid black;
+	height: 193px;
+	width: 246px;
+	position: relative;
+}
+
+.Tile-btn {
+	cursor: pointer;
+}
+
+.Tile input[type='text'] {
+	height: 26px;
+	margin-left: 3px;
+	padding: 0px;
+}
+
+/** Rules applying to rows in the tile, e.g headerBar, amountRow, dateRow */
+.Tile > div {
+	position: relative;
+}
+
+/** Rules applying to elements within rows, e.g any div or text box in a row */
+.Tile div div,
+.Tile div input[type='text'] {
+	display: inline;
+}
+
+/** Header Bar */
+
+.Tile-headerBar {
+	height: 25px;
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+
+/* Rules applying to all non-header rows, e.g amountRow and dateRow */ 
+.Tile-headerBar ~ div {
+	margin-top: 4px;	
+}
+
+/** Rules applying to all divs that are siblings of the currency pair input */
+.Tile-headerBar--currencyPair ~ div {
+	float: right;
+	height: 25px;
+	width: 25px;
+	text-align: center;
+	margin-right: 3px;
+	background-color: #999999;
+}
+
+/** Amount Row */
+
+.Tile-amountRow--amountInput {
+	width: 182px;
+	height: 26px;
+}
+
+.Tile-amountRow--gfa {
+	right: 63px;
+	position: absolute;
+}
+
+.Tile-amountRow--dealtCurrencyBtn {
+	width: 47px;
+	height: 28px;
+	border: 1px solid red;
+	float: right;
+	text-align: center;
+	margin-right: 3px;
+}
+
+/** Settlement date row */
+
+.Tile-dateRow--dateInput {
+	width: 236px;
+}
+
+.Tile-dateRow--calendarBtn {
+	position: absolute;
+	right: 13px;
+	top: 2px;
+}
+
+/** Button label row */
+
+.Tile-btnLabelRow--leftBtnLabel {
+	margin-left: 3px;
+}
+
+.Tile-btnLabelRow--rightBtnLabel {
+	float: right;
+	margin-right: 3px;
+}
+
+/** Button row */
+
+.Tile-btnRow--btn {
+	border-top: 1px solid black;
+	display: inline-block !important;
+	height: 67px;
+	width: 122px;
+}
+
+.Tile-btnRow--btnLeft {
+	border-right: 1px solid black;
+}
+
+.Tile-btnRow--btnRight {
+	border-left: 1px solid black;
+}
+
+.Tile-btnRow--btn > small {
+	position: absolute;
+}
+
+.Tile-btnRow--btn > em {
+	font-size: 3em;
+	margin-left: 25px;
+}

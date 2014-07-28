@@ -1,0 +1,15 @@
+{
+  "name": "react-tile",
+  "description": "A quick trade tile built using React",
+  "repository": "http://TODO",
+  "readme": "TODO.txt",
+  "version": "0.0.0",
+  "dependencies": {
+    "normalize.css": "^3.0.0",
+    "react": "^0.11.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

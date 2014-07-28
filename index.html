@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>Quick Trade Tile Using React</title>
+    <link rel="stylesheet" href="node_modules/normalize.css" />
+    <link rel="stylesheet" href="style/vendor/base.css" />
+    <link rel="stylesheet" href="style/main.css" />
+  </head>
+  <body>
+    <h1>Quick Trade Tile Using React</h1>
+
+    <!-- Body -->
+    <div id="react-tile"></div>
+
+    <!-- React runtime imports -->
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react/dist/JSXTransformer.js"></script>
+
+    <!-- Component imports -->
+    <script type="text/jsx;harmony=true" src="script/tile-component.js"></script>
+
+    <!-- Inline Scripts -->
+    <script type="text/jsx;harmony=true">
+
+      /**
+      * @jsx React.DOM
+      */
+
+      window.setInterval(() => {
+        var bid = (Math.random() + 1);
+        var ask = bid + (bid / 10000);
+
+        React.renderComponent(
+          <Tile bidAllIn={bid.toFixed(5)} askAllIn={ask.toFixed(5)} />,
+          document.getElementById('react-tile')
+        );
+      }, 500);
+
+    </script>
+  </body>
+</html>
