@@ -19,7 +19,9 @@ var Tile = React.createClass({
 
 	onAmountChanged(newAmount) {
 		console.log("amount changed to", newAmount);
-		this.setState({amount: newAmount});
+		if(newAmount === '' || (!isNaN(parseFloat(newAmount)) && isFinite(newAmount))) {
+			this.setState({amount: newAmount});
+		}
 	},
 
 	onDealtCurrencyChanged(newDealtCurrency) {
