@@ -13,11 +13,9 @@ var CurrencyPairInput = React.createClass({
 
 	/** Called after initial render */
 	componentDidMount() {
-		this.getCurrencyPairInputElement().addEventListener("keyup", function(event) {
+		this.getCurrencyPairInputElement().on("keyup", function(event) {
 			if(event.keyCode === 13) {
-				this.onCurrencyPairChanged({
-					target: event.srcElement
-				});
+				this.onCurrencyPairChanged(event);
 			}
 		}.bind(this));
 	},
@@ -60,21 +58,14 @@ var CurrencyPairInput = React.createClass({
 	},
 
 	getCurrencyPairInputElement() {
-		return this.getDOMNode().querySelector(".Tile-headerBar--currencyPair input");
+		return $(this.getDOMNode().querySelector(".Tile-headerBar--currencyPair input"));
 	},
 
 	focusOnCurrencyPairInput() {
 		var el = this.getCurrencyPairInputElement();
-		el.value = this.props.currencyPair;
 
-		if (typeof el.selectionStart == "number") {
-			el.selectionStart = el.selectionEnd = el.value.length;
-		} else if (typeof el.createTextRange != "undefined") {
-			el.focus();
-			var range = el.createTextRange();
-			range.collapse(false);
-			range.select();
-		}
+		el.val(this.props.currencyPair);
+		el.selectAll();
 
 		this.setState({currencyPairInputNeedsFocus: false});
 	}
