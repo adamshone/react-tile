@@ -4,14 +4,6 @@
 
 var AmountRow = React.createClass({
 
-	getInitialState() {
-		return {
-			currencyPair: this.props.currencyPair,
-			dealtCurrency: this.props.dealtCurrency,
-			amount: this.props.amount,
-		};
-	},
-
 	onAmountChanged(event) {
 		var newAmount = event.target.value;
 		this.setState({amount: newAmount});
@@ -19,7 +11,7 @@ var AmountRow = React.createClass({
 	},
 
 	onDealtCurrencyChanged(event) {
-		var newDealtCurrency = this.state.currencyPair.replace(this.state.dealtCurrency, '');
+		var newDealtCurrency = this.props.currencyPair.replace(this.props.dealtCurrency, '');
 		this.setState({dealtCurrency: newDealtCurrency});
 		this.props.onDealtCurrencyChanged(newDealtCurrency);
 	},
@@ -28,9 +20,9 @@ var AmountRow = React.createClass({
 
 		return(
 			<div className="Tile-amountRow">
-				<input type="text" className="Tile-amountRow--amountInput" value={this.state.amount} onChange={this.onAmountChanged}></input>
+				<input type="text" className="Tile-amountRow--amountInput" value={this.props.amount} onChange={this.onAmountChanged}></input>
 				<div className="Tile-amountRow--gfa">{this.props.gfa}</div>
-				<div className="Tile-amountRow--dealtCurrencyBtn Tile-btn" onClick={this.onDealtCurrencyChanged}>{this.state.dealtCurrency}</div>
+				<div className="Tile-amountRow--dealtCurrencyBtn Tile-btn" onClick={this.onDealtCurrencyChanged}>{this.props.dealtCurrency}</div>
 			</div>
 		);
 	}
