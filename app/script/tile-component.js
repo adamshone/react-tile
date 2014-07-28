@@ -5,44 +5,40 @@
 var Tile = React.createClass({
 
 	getInitialState() {
+
+		var currencyPair = 'USDJPY';
+
 		return {
-			currencyPair: 'USDJPY',
-			dealtCurrency: 'USD',
-			amount: 100,
+			currencyPair: currencyPair,
+			dealtCurrency: currencyPair.substring(0,3),
+			amount: '10000',
 			settlementDate: '30/07/2014',
 			tenor: 'SPOT',
 		};
 	},
 
-	dealtCurrencyButtonClicked(event) {
-		var newDealtCurrency = this.state.currencyPair.replace(this.state.dealtCurrency, '');
-		this.setState({
-			dealtCurrency: newDealtCurrency
-		});
+	onAmountChanged(newAmount) {
+		console.log("amount changed to", newAmount);
+		this.setState({amount: newAmount});
+	},
+
+	onDealtCurrencyChanged(newDealtCurrency) {
+		console.log("dealt currency changed to", newDealtCurrency);
+		this.setState({dealtCurrency: newDealtCurrency});
 	},
 
 	render() {
 
-		var baseCurrency = this.state.currencyPair.substring(0,3);
-  		var settlementDateText = `${this.state.settlementDate} (${this.state.tenor})`;
+		var state = this.state;
+		var baseCurrency = state.currencyPair.substring(0,3);
+  		var settlementDateText = `${state.settlementDate} (${state.tenor})`;
 
   		return(
 		    <div className="Tile">
-		      <div className="Tile-headerBar">
-		        <div className="Tile-headerBar--currencyPair">{this.state.currencyPair}</div>
-		        <div className="Tile-headerBar--closeButton Tile-btn">X</div>
-		        <div className="Tile-headerBar--menuButton Tile-btn">m</div>
-		      </div>
-		      <div className="Tile-amountRow">
-		        <input type="text" className="Tile-amountRow--amountInput" defaultValue={this.state.amount}></input>
-		        <div className="Tile-amountRow--gfa">10m</div>
-		        <div className="Tile-amountRow--dealtCurrencyBtn Tile-btn" onClick={this.dealtCurrencyButtonClicked}>{this.state.dealtCurrency}</div>
-		      </div>
-		      <div className="Tile-dateRow">
-		        <input type="text" className="Tile-dateRow--dateInput" defaultValue={settlementDateText}></input>
-		        <div className="Tile-dateRow--calendarBtn Tile-btn">C</div>
-		      </div>
-		      <ButtonLabelRow dealtCurrency={this.state.dealtCurrency} />
+		      <HeaderRow currencyPair={state.currencyPair} />
+		      <AmountRow currencyPair={state.currencyPair} amount={state.amount} dealtCurrency={state.dealtCurrency} gfa="10m" onAmountChanged={this.onAmountChanged} onDealtCurrencyChanged={this.onDealtCurrencyChanged}/>
+		      <DateRow settlementDate={state.settlementDate} tenor={state.tenor}/>
+		      <ButtonLabelRow dealtCurrency={state.dealtCurrency} />
 		      <ButtonRow bidAllIn={this.props.bidAllIn} askAllIn={this.props.askAllIn} />
 		    </div>
     	);
