@@ -15,21 +15,19 @@ var ExecuteButton = React.createClass({
 
 	render() {
 
-	  var classes = React.addons.classSet({
-	    'Tile-btn': true,
-	    'Tile-btnRow--btn': true
-	  });
+		var classes = React.addons.classSet({
+			'Tile-btn': true,
+			'Tile-btnRow--btn': true
+		});
   
-  // return <div className={classes}>Great, I'll be there.</div>;
-
 		var rateParts = this._splitRate(this.props.rate);
 
 		return(
-	        <div className={classes}>
-	          <small>{rateParts.bigFigure}</small>
-	          <em>{rateParts.pips}</em>
-	          <span>{rateParts.pipette}</span>
-	        </div>
+		    <div className={classes}>
+		      <small>{rateParts.bigFigure}</small>
+		      <em>{rateParts.pips}</em>
+		      <span>{rateParts.pipette}</span>
+		    </div>
 		);
 	}
 });
