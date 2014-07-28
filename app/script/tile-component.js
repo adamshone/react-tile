@@ -27,6 +27,10 @@ var Tile = React.createClass({
 		this.setState({dealtCurrency: newDealtCurrency});
 	},
 
+	onExecuteButtonClicked(payload) {
+		console.log("trade button clicked", payload);
+	},
+
 	render() {
 
 		var state = this.state;
@@ -39,7 +43,7 @@ var Tile = React.createClass({
 		      <AmountRow currencyPair={state.currencyPair} amount={state.amount} dealtCurrency={state.dealtCurrency} gfa="10m" onAmountChanged={this.onAmountChanged} onDealtCurrencyChanged={this.onDealtCurrencyChanged}/>
 		      <DateRow settlementDate={state.settlementDate} tenor={state.tenor}/>
 		      <ButtonLabelRow dealtCurrency={state.dealtCurrency} />
-		      <ButtonRow bidAllIn={this.props.bidAllIn} askAllIn={this.props.askAllIn} />
+		      <ButtonRow bidAllIn={this.props.bidAllIn} askAllIn={this.props.askAllIn} onExecuteButtonClicked={this.onExecuteButtonClicked}/>
 		    </div>
     	);
 	}

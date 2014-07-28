@@ -4,13 +4,20 @@
 
 var ExecuteButton = React.createClass({
 
-	_splitRate(rateString) {
+	splitRate(rateString) {
 
 		return {
 			bigFigure: rateString.substring(0,4),
 			pips: rateString.substring(4,6),
 			pipette: rateString.substring(6)
 		};
+	},
+
+	onClick(event) {
+		this.props.onClick({
+			side: this.props.side,
+			rate: this.props.rate
+		});
 	},
 
 	render() {
@@ -20,10 +27,10 @@ var ExecuteButton = React.createClass({
 			'Tile-btnRow--btn': true
 		});
   
-		var rateParts = this._splitRate(this.props.rate);
+		var rateParts = this.splitRate(this.props.rate);
 
 		return(
-		    <div className={classes}>
+		    <div className={classes} onClick={this.onClick}>
 		      <small>{rateParts.bigFigure}</small>
 		      <em>{rateParts.pips}</em>
 		      <span>{rateParts.pipette}</span>

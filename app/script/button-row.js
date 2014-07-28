@@ -8,8 +8,8 @@ var ButtonRow = React.createClass({
 
 		return(
 			<div className="Tile-btnRow">
-		        <ExecuteButton rate={this.props.bidAllIn} />
-		        <ExecuteButton rate={this.props.askAllIn} />
+		        <ExecuteButton side="bid" rate={this.props.bidAllIn} onClick={this.props.onExecuteButtonClicked} />
+		        <ExecuteButton side="ask" rate={this.props.askAllIn} onClick={this.props.onExecuteButtonClicked} />
 			</div>
 		);
 	}
