@@ -97,19 +97,16 @@
 
 /** Button row */
 
+.Tile-btnRow > div:first-child {
+	border-right: 1px solid black;
+	padding-left: 1px;
+}
+
 .Tile-btnRow--btn {
 	border-top: 1px solid black;
 	display: inline-block !important;
 	height: 67px;
 	width: 122px;
-}
-
-.Tile-btnRow--btnLeft {
-	border-right: 1px solid black;
-}
-
-.Tile-btnRow--btnRight {
-	border-left: 1px solid black;
 }
 
 .Tile-btnRow--btn > small {

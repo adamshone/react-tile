@@ -22,16 +22,9 @@ var Tile = React.createClass({
 	},
 
 	render() {
+
 		var baseCurrency = this.state.currencyPair.substring(0,3);
   		var settlementDateText = `${this.state.settlementDate} (${this.state.tenor})`;
-
-  		var bidBigFig = this.props.bidAllIn.substring(0,4);
-  		var bidPips = this.props.bidAllIn.substring(4,6);
-  		var bidPipette = this.props.bidAllIn.substring(6);
-
-		var askBigFig = this.props.askAllIn.substring(0,4);
-  		var askPips = this.props.askAllIn.substring(4,6);
-  		var askPipette = this.props.askAllIn.substring(6);
 
   		return(
 		    <div className="Tile">
@@ -54,16 +47,8 @@ var Tile = React.createClass({
 		        <div className="Tile-btnLabelRow--rightBtnLabel">BUY {this.state.dealtCurrency}</div>
 		      </div>
 		      <div className="Tile-btnRow">
-		        <div className="Tile-btnRow--btn Tile-btnRow--btnLeft Tile-btn">
-		          <small>{bidBigFig}</small>
-		          <em>{bidPips}</em>
-		          <span>{bidPipette}</span>
-		        </div>
-		        <div className="Tile-btnRow--btn Tile-btnRow--btnRight Tile-btn">
-		          <small>{askBigFig}</small>
-		          <em>{askPips}</em>
-		          <span>{askPipette}</span>
-		        </div>
+		        <ExecuteButton rate={this.props.bidAllIn} />
+		        <ExecuteButton rate={this.props.askAllIn} />
 		      </div>
 		    </div>
     	);
