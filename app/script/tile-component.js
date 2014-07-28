@@ -42,14 +42,8 @@ var Tile = React.createClass({
 		        <input type="text" className="Tile-dateRow--dateInput" defaultValue={settlementDateText}></input>
 		        <div className="Tile-dateRow--calendarBtn Tile-btn">C</div>
 		      </div>
-		      <div className="Tile-btnLabelRow">
-		        <div className="Tile-btnLabelRow--leftBtnLabel">SELL {this.state.dealtCurrency}</div>
-		        <div className="Tile-btnLabelRow--rightBtnLabel">BUY {this.state.dealtCurrency}</div>
-		      </div>
-		      <div className="Tile-btnRow">
-		        <ExecuteButton rate={this.props.bidAllIn} />
-		        <ExecuteButton rate={this.props.askAllIn} />
-		      </div>
+		      <ButtonLabelRow dealtCurrency={this.state.dealtCurrency} />
+		      <ButtonRow bidAllIn={this.props.bidAllIn} askAllIn={this.props.askAllIn} />
 		    </div>
     	);
 	}
