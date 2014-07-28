@@ -18,14 +18,22 @@ var Tile = React.createClass({
 	},
 
 	onAmountChanged(newAmount) {
-		console.log("amount changed to", newAmount);
 		if(newAmount === '' || (!isNaN(parseFloat(newAmount)) && isFinite(newAmount))) {
 			this.setState({amount: newAmount});
 		}
 	},
 
+	onCurrencyPairChanged(currencyPair) {
+		if(currencyPair.match(/\w{6}/)) {
+			currencyPair = currencyPair.toUpperCase();
+			this.setState({
+				currencyPair: currencyPair,
+				dealtCurrency: currencyPair.substring(0,3)
+			});	
+		}
+	},
+
 	onDealtCurrencyChanged(newDealtCurrency) {
-		console.log("dealt currency changed to", newDealtCurrency);
 		this.setState({dealtCurrency: newDealtCurrency});
 	},
 
@@ -41,7 +49,7 @@ var Tile = React.createClass({
 
   		return(
 		    <div className="Tile">
-		      <HeaderRow currencyPair={state.currencyPair} />
+		      <HeaderRow currencyPair={state.currencyPair} onCurrencyPairChanged={this.onCurrencyPairChanged} />
 		      <AmountRow currencyPair={state.currencyPair} amount={state.amount} dealtCurrency={state.dealtCurrency} gfa="10m" onAmountChanged={this.onAmountChanged} onDealtCurrencyChanged={this.onDealtCurrencyChanged}/>
 		      <DateRow settlementDate={state.settlementDate} tenor={state.tenor}/>
 		      <ButtonLabelRow dealtCurrency={state.dealtCurrency} />
