@@ -3,6 +3,8 @@ react-tile
 
 A spike for building a quick trade tile using React.
 
+Demo avaliable here: [http://adamshone.github.io/react-tile/app/](http://adamshone.github.io/react-tile/app/).
+
 Install
 -------
 
