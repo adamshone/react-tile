@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
-    <title>Quick Trade Tile Using React</title>
+    <title>Quick Trade Tiles Using React</title>
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <link rel="stylesheet" href="style/vendor/base.css" />
     <link rel="stylesheet" href="style/main.css" />
   </head>
   <body>
-    <h1>Quick Trade Tile Using React</h1>
+    <h1>Quick Trade Tiles Using React</h1>
 
     <!-- Body -->
     <div id="react-tile"></div>
@@ -38,15 +38,25 @@
       * @jsx React.DOM
       */
 
-      window.setInterval(() => {
-        var bid = (Math.random() + 1);
-        var ask = bid + (bid / 10000);
+      var childElements = [];
+      for(var i=0; i<5; i++) {
+        var child = document.createElement("SPAN");
+        childElements.push(child);
+        document.getElementById('react-tile').appendChild(child);
+      }
 
-        React.renderComponent(
-          <Tile bidAllIn={bid.toFixed(5)} askAllIn={ask.toFixed(5)} />,
-          document.getElementById('react-tile')
-        );
-      }, 500);
+      window.setInterval(() => {
+
+        childElements.forEach(function(el) {
+          var bid = (Math.random() + 1);
+          var ask = bid + (bid / 10000);
+
+          React.renderComponent(
+            <Tile bidAllIn={bid.toFixed(5)} askAllIn={ask.toFixed(5)} />,
+            el
+          );
+        });
+      }, 250);
 
     </script>
   </body>

@@ -5,6 +5,8 @@
 	height: 193px;
 	width: 246px;
 	position: relative;
+	display: inline-block;
+	margin-left: 15px;
 }
 
 .Tile-btn {
