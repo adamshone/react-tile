@@ -19,17 +19,18 @@ var Tile = React.createClass({
 		};
 	},
 
+	tick() {
+		var bid = (Math.random() + 1);
+		var ask = bid + (bid / 10000);
+
+		this.setState({
+			bid: bid.toFixed(5),
+			ask: ask.toFixed(5)
+		});
+	},
+
 	componentDidMount() {
-		window.setInterval(function() {
-
-          var bid = (Math.random() + 1);
-          var ask = bid + (bid / 10000);
-
-			this.setState({
-				bid: bid.toFixed(5),
-				ask: ask.toFixed(5)
-			});
-		}.bind(this), 250);
+		window.setInterval(this.tick, 50);
 	},
 
 	onAmountChanged(newAmount) {
