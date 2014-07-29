@@ -21,6 +21,9 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="script/vendor/jquery.caret-1.5.0.min.js"></script>
 
+    <!-- Non-React code -->
+    <script src="script/message-service.js"></script>
+
     <!-- Component imports -->
     <script type="text/jsx;harmony=true" src="script/tile-component.js"></script>
     <script type="text/jsx;harmony=true" src="script/header-row.js"></script>
@@ -38,20 +41,18 @@
       * @jsx React.DOM
       */
 
-      var childElements = [];
+      var messageService = new MessageService(50);
+      messageService.connect();
+      window.messageService = messageService;
 
-      for(var i=0; i<5; i++) {
+      for(var i=0; i<1; i++) {
         var child = document.createElement("SPAN");
-        childElements.push(child);
+        React.renderComponent(
+          <Tile messageService={messageService}/>,
+          child
+        );
         document.getElementById('react-tile').appendChild(child);
       }
-
-      childElements.forEach(function(el) {
-        React.renderComponent(
-          <Tile bidAllIn="-.-----" askAllIn="-.-----" />,
-          el
-        );
-      });
 
     </script>
   </body>

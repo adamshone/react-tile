@@ -14,45 +14,59 @@ var Tile = React.createClass({
 			amount: '10000',
 			settlementDate: '30/07/2014',
 			tenor: 'SPOT',
-			bid: this.props.bidAllIn,
-			ask: this.props.askAllIn
+			bid: "-.-----",
+			ask: "-.-----"
 		};
 	},
 
-	tick() {
-		var bid = (Math.random() + 1);
-		var ask = bid + (bid / 10000);
+	/** Called once by React after the component first renders */
+	componentDidMount() {
+		this.subscription = this.props.messageService.subscribe(this.getSubject(), this);
+	},
 
+	/** Called by the message service when there is a new price */
+	onRecordUpdate(subscription, event) {
 		this.setState({
-			bid: bid.toFixed(5),
-			ask: ask.toFixed(5)
+			bid: event.getFields()["L1_AllInBidRate"],
+			ask: event.getFields()["L1_AllInAskRate"]
 		});
 	},
 
-	componentDidMount() {
-		window.setInterval(this.tick, 50);
-	},
-
+	/** Called by subcomponent */
 	onAmountChanged(newAmount) {
-		if(newAmount === '' || (!isNaN(parseFloat(newAmount)) && isFinite(newAmount))) {
+		if(newAmount === "" || (!isNaN(parseFloat(newAmount)) && isFinite(newAmount))) {
 			this.setState({amount: newAmount});
 		}
+
+		if(newAmount === "") {
+			this.setState({
+				bid: "-.-----",
+				ask: "-.-----",
+			});
+		}
+
+		this.resubscribe();
 	},
 
+	/** Called by subcomponent */
 	onCurrencyPairChanged(currencyPair) {
 		if(currencyPair.match(/\w{6}/)) {
 			currencyPair = currencyPair.toUpperCase();
 			this.setState({
 				currencyPair: currencyPair,
 				dealtCurrency: currencyPair.substring(0,3)
-			});	
+			});
+			this.resubscribe();
 		}
 	},
 
+	/** Called by subcomponent */
 	onDealtCurrencyChanged(newDealtCurrency) {
 		this.setState({dealtCurrency: newDealtCurrency});
+		this.resubscribe();
 	},
 
+	/** Called by subcomponent */
 	onExecuteButtonClicked(payload) {
 		console.log("trade button clicked", payload);
 	},
@@ -70,5 +84,18 @@ var Tile = React.createClass({
 		      <ButtonRow bid={this.state.bid} ask={this.state.ask} onExecuteButtonClicked={this.onExecuteButtonClicked}/>
 		    </div>
     	);
+	},
+
+	resubscribe() {
+		window.setTimeout(function() {
+			this.subscription.unsubscribe();
+			if(this.state.amount !== '') {
+				this.subscription = this.props.messageService.subscribe(this.getSubject(), this);
+			}
+		}.bind(this), 0);
+	},
+
+	getSubject() {
+		return "/FX/" + this.state.currencyPair + "/" + this.state.tenor + "/" + this.state.dealtCurrency + "/" + this.state.amount;
 	}
 });
