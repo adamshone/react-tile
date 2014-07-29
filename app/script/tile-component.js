@@ -44,8 +44,6 @@ var Tile = React.createClass({
 	render() {
 
 		var state = this.state;
-		var baseCurrency = state.currencyPair.substring(0,3);
-  		var settlementDateText = `${state.settlementDate} (${state.tenor})`;
 
   		return(
 		    <div className="Tile">
