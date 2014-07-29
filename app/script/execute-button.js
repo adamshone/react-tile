@@ -21,16 +21,11 @@ var ExecuteButton = React.createClass({
 	},
 
 	render() {
-
-		var classes = React.addons.classSet({
-			'Tile-btn': true,
-			'Tile-btnRow--btn': true
-		});
   
 		var rateParts = this.splitRate(this.props.rate);
 
 		return(
-		    <div className={classes} onClick={this.onClick}>
+		    <div className="Tile-btn Tile-btnRow--btn" onClick={this.onClick}>
 		      <small>{rateParts.bigFigure}</small>
 		      <em>{rateParts.pips}</em>
 		      <span>{rateParts.pipette}</span>
