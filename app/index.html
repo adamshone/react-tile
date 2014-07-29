@@ -39,24 +39,19 @@
       */
 
       var childElements = [];
+
       for(var i=0; i<5; i++) {
         var child = document.createElement("SPAN");
         childElements.push(child);
         document.getElementById('react-tile').appendChild(child);
       }
 
-      window.setInterval(() => {
-
-        childElements.forEach(function(el) {
-          var bid = (Math.random() + 1);
-          var ask = bid + (bid / 10000);
-
-          React.renderComponent(
-            <Tile bidAllIn={bid.toFixed(5)} askAllIn={ask.toFixed(5)} />,
-            el
-          );
-        });
-      }, 250);
+      childElements.forEach(function(el) {
+        React.renderComponent(
+          <Tile bidAllIn="-.-----" askAllIn="-.-----" />,
+          el
+        );
+      });
 
     </script>
   </body>

@@ -14,7 +14,22 @@ var Tile = React.createClass({
 			amount: '10000',
 			settlementDate: '30/07/2014',
 			tenor: 'SPOT',
+			bid: this.props.bidAllIn,
+			ask: this.props.askAllIn
 		};
+	},
+
+	componentDidMount() {
+		window.setInterval(function() {
+
+          var bid = (Math.random() + 1);
+          var ask = bid + (bid / 10000);
+
+			this.setState({
+				bid: bid.toFixed(5),
+				ask: ask.toFixed(5)
+			});
+		}.bind(this), 250);
 	},
 
 	onAmountChanged(newAmount) {
@@ -51,7 +66,7 @@ var Tile = React.createClass({
 		      <AmountRow currencyPair={state.currencyPair} amount={state.amount} dealtCurrency={state.dealtCurrency} gfa="10m" onAmountChanged={this.onAmountChanged} onDealtCurrencyChanged={this.onDealtCurrencyChanged}/>
 		      <DateRow settlementDate={state.settlementDate} tenor={state.tenor}/>
 		      <ButtonLabelRow dealtCurrency={state.dealtCurrency} />
-		      <ButtonRow bidAllIn={this.props.bidAllIn} askAllIn={this.props.askAllIn} onExecuteButtonClicked={this.onExecuteButtonClicked}/>
+		      <ButtonRow bid={this.state.bid} ask={this.state.ask} onExecuteButtonClicked={this.onExecuteButtonClicked}/>
 		    </div>
     	);
 	}
