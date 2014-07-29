@@ -5,7 +5,7 @@
 	height: 193px;
 	width: 246px;
 	position: relative;
-	display: inline-block;
+	float: left;
 	margin-left: 15px;
 }
 
@@ -106,7 +106,7 @@
 
 .Tile-btnRow--btn {
 	border-top: 1px solid black;
-	display: inline-block !important;
+	float: left;
 	height: 67px;
 	width: 122px;
 }

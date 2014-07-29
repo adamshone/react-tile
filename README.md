@@ -27,4 +27,4 @@ Install
  * add propTypes to make the components fail fast if they don't get the right props
  * package management instead of lots of script tags (Webpack?)
  * unit tests
- * why does the whole tile repaint instead of just the rates?
+ * if you use `display: inline-block` the whole component gets repainted always. Need to find out why.
