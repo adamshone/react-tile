@@ -6,7 +6,6 @@ var AmountRow = React.createClass({
 
 	onAmountChanged(event) {
 		var newAmount = event.target.value;
-		this.setState({amount: newAmount});
 		this.props.onAmountChanged(newAmount);
 	},
 
