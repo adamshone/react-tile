@@ -43,12 +43,14 @@
 
       var messageService = new MessageService(50);
       messageService.connect();
-      window.messageService = messageService;
 
-      for(var i=0; i<1; i++) {
+      var supportedCurrencyPairs = messageService.getSupportedCurrencyPairs();
+
+      for(var i=0; i<supportedCurrencyPairs.length; i++) {
+        var currencyPair = supportedCurrencyPairs[i % supportedCurrencyPairs.length];
         var child = document.createElement("SPAN");
         React.renderComponent(
-          <Tile messageService={messageService}/>,
+          <Tile currencyPair={currencyPair} messageService={messageService}/>,
           child
         );
         document.getElementById('react-tile').appendChild(child);

@@ -6,11 +6,9 @@ var Tile = React.createClass({
 
 	getInitialState() {
 
-		var currencyPair = 'USDJPY';
-
 		return {
-			currencyPair: currencyPair,
-			dealtCurrency: currencyPair.substring(0,3),
+			currencyPair: this.props.currencyPair,
+			dealtCurrency: this.props.currencyPair.substring(0,3),
 			amount: '10000',
 			settlementDate: '30/07/2014',
 			tenor: 'SPOT',

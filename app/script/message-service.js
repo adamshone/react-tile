@@ -3,6 +3,19 @@ var MessageService = function(updateRate) {
 	var priceGenerators = {};
 	var updateRate = updateRate || 250;
 
+	var seeds = {
+		"USDJPY": 102.090,
+		"USDGBP": 0.59630,
+		"USDCAD": 1.09543,
+		"USDZAR": 10.62352,
+		"USDEUR": 0.75234,
+		"EURGBP": 0.79112,
+		"GBPEUR": 1.26449,
+		"USDAUD": 1.07943,
+		"EURCHF": 1.22942,
+		"GBPUSD": 1.69328
+	}
+
 	var removeSubscription = function(subject, subscription) {
 		var subscriptionsForSubject = subscriptions[subject];
 
@@ -22,7 +35,10 @@ var MessageService = function(updateRate) {
 	};
 
 	return {
-		subscriptions: subscriptions,
+
+		getSupportedCurrencyPairs: function() {
+			return Object.keys(seeds);
+		},
 
 		connect: function() {
 			// NO-OP
@@ -40,7 +56,7 @@ var MessageService = function(updateRate) {
 				subscriptions[subject].push(subscription);
 			} else {
 				subscriptions[subject] = [subscription];
-				var priceGenerator = new PriceGenerator(subject, subscriptions);
+				var priceGenerator = new PriceGenerator(subject, subscriptions, seeds);
 				var handle = window.setInterval(priceGenerator.update.bind(priceGenerator), updateRate);
 				priceGenerators[subject] = handle;
 			}
@@ -50,25 +66,31 @@ var MessageService = function(updateRate) {
 	};
 };
 
-var PriceGenerator = function(subject, subscriptions, seed) {
+var PriceGenerator = function(subject, subscriptions, seeds) {
 	this.subject = subject;
 	this.subscriptions = subscriptions;
-	this.seed = seed || Math.random() + 1;
+
+	var currencyPair = subject.match(/\/FX\/(.+)\/.+\/.+\//)[1];
+	this.seed = seeds[currencyPair] || Math.random() + 1;
+	seeds[currencyPair] = this.seed;
 	this.previousValue = this.seed;
 };
 
 PriceGenerator.prototype.update = function() {
 
-	var newBid = this.previousValue + (Math.random() / 10000);
-	var newAsk = newBid + 0.0002;
+	var delta  = (this.previousValue > 100) ? Math.random() / 10 : Math.random() / 1000;
+	var increment = (this.previousValue > 100) ? 0.02 : 0.0002;
+
+	var newBid = this.previousValue + delta;
+	var newAsk = newBid + increment;
 
 	var subscriptions = this.subscriptions[this.subject];
 	subscriptions.forEach(function(subscription) {
 		subscription.listener.onRecordUpdate(subscription, {
 			getFields: function() {
 				return {
-					"L1_AllInBidRate": newBid.toFixed(5),
-					"L1_AllInAskRate": newAsk.toFixed(5)
+					"L1_AllInBidRate": newBid.toFixed(5).substring(0,7),
+					"L1_AllInAskRate": newAsk.toFixed(5).substring(0,7)
 				};
 			}
 		});
