@@ -15,7 +15,7 @@ var CurrencyPairInput = React.createClass({
 	componentDidMount() {
 		this.getCurrencyPairInputElement().on("keyup", function(event) {
 			if(event.keyCode === 13) {
-				this.onCurrencyPairChanged(event);
+				this.getCurrencyPairInputElement().blur();
 			}
 		}.bind(this));
 	},
