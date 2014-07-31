@@ -3,7 +3,9 @@ react-tile
 
 A spike for building a quick trade tile using React.
 
-Demo avaliable here: [http://adamshone.github.io/react-tile/app/](http://adamshone.github.io/react-tile/app/).
+~~Demo available here: [http://adamshone.github.io/react-tile/app/](http://adamshone.github.io/react-tile/app/).~~
+
+Demo no longer available because there isn't a gh-pages equivalent in Stash.
 
 Install
 -------
@@ -12,20 +14,20 @@ Install
  * npm install
  * bower install
  * grunt serve
- 
+
  The demo runs on port 9000.
- 
- Implemented
- -----------
- 
+
+Implemented
+-----------
+
  * price updates
  * change currency pair (must be changed to a six character string)
  * dealt currency toggle
  * amount change (only valid numbers are accepted)
- 
- Next
- ----
- 
+
+Next
+----
+
  * add propTypes to make the components fail fast if they don't get the right props
  * package management instead of lots of script tags (Webpack?)
  * unit tests
