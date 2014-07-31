@@ -10,7 +10,7 @@ Demo no longer available because there isn't a gh-pages equivalent in Stash.
 Install
 -------
 
- * git clone https://github.com/adamshone/react-tile.git
+ * git clone https://YOUR_USERNAME@stash.caplin.com/scm/capdemo/react-tile.git
  * npm install
  * bower install
  * grunt serve
