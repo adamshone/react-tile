@@ -44,7 +44,7 @@
 	margin-top: 4px;	
 }
 
-/** Rules applying to all divs that are siblings of the currency pair input */
+/** Rules applying to all divs that are siblings of the currency pair input (the menu and close buttons) */
 .Tile-headerBar--currencyPair ~ div {
 	float: right;
 	height: 25px;
@@ -52,6 +52,16 @@
 	text-align: center;
 	margin-right: 3px;
 	background-color: #999999;
+}
+
+.Tile-headerBar--currencyPair > span {
+	margin-left: 3px;
+}
+
+.Tile-headerBar--currencyPair input[type='text'] {
+	margin-left: 3px;
+	width: 180px;
+	height: 15px;
 }
 
 /** Amount Row */

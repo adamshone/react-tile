@@ -24,9 +24,11 @@ var MessageService = function(updateRate) {
 				if(subscriptionsForSubject[i] === subscription) {
 					subscriptionsForSubject.splice(i,1);
 					subscription.unsubscribe = function() {};
+					
 					if(subscriptionsForSubject.length === 0) {
 						window.clearInterval(priceGenerators[subject]);
 						delete subscriptions[subject];
+						delete priceGenerators[subject];
 					}
 					break;
 				}

@@ -52,7 +52,7 @@ var CurrencyPairInput = React.createClass({
 		return(
 			<div className="Tile-headerBar--currencyPair">
 				<span style={currencyPairLabelStyle} onClick={this.onClick}>{this.props.currencyPair}</span>
-				<input style={currencyPairInputStyle} defaultValue={this.props.currencyPair} onBlur={this.onCurrencyPairChanged}/>
+				<input type="text" style={currencyPairInputStyle} defaultValue={this.props.currencyPair} onBlur={this.onCurrencyPairChanged}/>
 			</div>
 		);
 	},
