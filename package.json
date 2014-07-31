@@ -1,7 +1,7 @@
 {
   "name": "react-tile",
   "description": "A quick trade tile built using React",
-  "repository": "https://github.com/adamshone/react-tile",
+  "repository": "https://stash.caplin.com/projects/CAPDEMO/repos/react-tile",
   "readme": "TODO.txt",
   "version": "0.0.0",
   "dependencies": {},
