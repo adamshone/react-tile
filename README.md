@@ -21,11 +21,11 @@ Implemented
  * change currency pair (must be changed to a six character string)
  * dealt currency toggle
  * amount change (only valid numbers are accepted)
+ * ~~package management instead of lots of script tags (Webpack?)~~
 
 Next
 ----
 
  * add propTypes to make the components fail fast if they don't get the right props
- * ~~package management instead of lots of script tags (Webpack?)~~
  * unit tests
  * if you use `display: inline-block` the whole component gets repainted always. Need to find out why.
