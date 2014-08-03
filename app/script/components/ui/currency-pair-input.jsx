@@ -2,6 +2,8 @@
 
 var React = require('react/addons');
 var $ = require('jquery/dist/jquery.min');
+window.jQuery = window.jQuery || $;
+require('../../vendor/jquery.caret-1.5.0.min.js');
 
 var CurrencyPairInput = React.createClass({
 
