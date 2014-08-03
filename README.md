@@ -12,10 +12,9 @@ Install
 
  * git clone https://YOUR_USERNAME@stash.caplin.com/scm/capdemo/react-tile.git
  * npm install
- * bower install
  * grunt serve
 
- The demo runs on port 9000.
+ The demo runs on port 8000.
 
 Implemented
 -----------
