@@ -26,14 +26,14 @@ class MessageService {
 				if(subscriptionsForSubject[i] === subscription) {
 					subscriptionsForSubject.splice(i,1);
 					subscription.unsubscribe = function() {};
-					
-					if(subscriptionsForSubject.length === 0) {
-						window.clearInterval(this.priceGenerators[subject]);
-						delete this.subscriptions[subject];
-						delete this.priceGenerators[subject];
-					}
 					break;
 				}
+			}
+
+			if(subscriptionsForSubject.length === 0) {
+				window.clearInterval(this.priceGenerators[subject]);
+				delete this.subscriptions[subject];
+				delete this.priceGenerators[subject];
 			}
 		}
 	}
@@ -47,10 +47,11 @@ class MessageService {
 	};
 
 	subscribe(subject, listener) {
+		var self = this;
 		var subscription = {
 			unsubscribe: function() {
-				this.removeSubscription(subject, this);
-			}.bind(this),
+				self.removeSubscription(subject, this);
+			},
 			listener: listener
 		};
 
