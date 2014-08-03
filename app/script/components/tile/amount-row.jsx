@@ -1,6 +1,6 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
 
 var AmountRow = React.createClass({
 
@@ -26,3 +26,5 @@ var AmountRow = React.createClass({
 		);
 	}
 });
+
+module.exports = AmountRow;

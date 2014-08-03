@@ -1,6 +1,6 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
 
 var DateRow = React.createClass({
 
@@ -16,3 +16,5 @@ var DateRow = React.createClass({
 		);
 	}
 });
+
+module.exports = DateRow;

@@ -15,7 +15,7 @@ module.exports = {
   cache: true,
   debug: true,
   devtool: false,
-  entry: './src/scripts/components/<%= pkg.mainInput %>.jsx',
+  entry: './app/script/components/<%= pkg.mainInput %>.jsx',
 
   stats: {
     colors: true,
@@ -43,7 +43,10 @@ module.exports = {
       loader: 'url-loader?limit=10000&minetype=image/png'
     }, {
       test: /\.jsx$/,
-      loader: 'jsx-loader'
+      loader: 'jsx-loader?harmony&insertPragma=React.DOM'
+    }, {
+      test: /\.js$/,
+      loader: 'es6-loader'
     }]
   }
 };

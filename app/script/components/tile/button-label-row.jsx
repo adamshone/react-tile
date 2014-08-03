@@ -1,6 +1,6 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
 
 var ButtonLabelRow = React.createClass({
 
@@ -14,3 +14,5 @@ var ButtonLabelRow = React.createClass({
 		);
 	}
 });
+
+module.exports = ButtonLabelRow;

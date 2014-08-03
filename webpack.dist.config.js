@@ -53,7 +53,10 @@ module.exports = {
         loader: 'url-loader?limit=10000&minetype=image/png'
       }, {
         test: /\.jsx$/,
-        loader: 'jsx-loader'
+        loader: 'jsx-loader?harmony&insertPragma=React.DOM'
+      }, {
+        test: /\.js$/,
+        loader: 'es6-loader'
       }
     ]
   }

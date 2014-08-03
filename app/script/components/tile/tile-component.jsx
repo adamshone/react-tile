@@ -1,6 +1,11 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
+var HeaderRow = require('./header-row.jsx');
+var AmountRow = require('./amount-row.jsx');
+var DateRow = require('./date-row.jsx');
+var ButtonLabelRow = require('./button-label-row.jsx');
+var ButtonRow = require('./button-row.jsx');
 
 var Tile = React.createClass({
 
@@ -97,3 +102,5 @@ var Tile = React.createClass({
 		return "/FX/" + this.state.currencyPair + "/" + this.state.tenor + "/" + this.state.dealtCurrency + "/" + this.state.amount;
 	}
 });
+
+module.exports = Tile;

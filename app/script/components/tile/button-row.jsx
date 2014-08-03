@@ -1,6 +1,7 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
+var ExecuteButton = require('./execute-button.jsx');
 
 var ButtonRow = React.createClass({
 
@@ -14,3 +15,5 @@ var ButtonRow = React.createClass({
 		);
 	}
 });
+
+module.exports = ButtonRow;

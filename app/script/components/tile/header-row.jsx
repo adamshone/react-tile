@@ -1,6 +1,7 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
+var CurrencyPairInput = require('../ui/currency-pair-input.jsx');
 
 var HeaderRow = React.createClass({
 
@@ -15,3 +16,5 @@ var HeaderRow = React.createClass({
 		);
 	}
 });
+
+module.exports = HeaderRow;

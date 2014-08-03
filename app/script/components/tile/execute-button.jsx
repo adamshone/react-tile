@@ -1,6 +1,6 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
 
 var ExecuteButton = React.createClass({
 
@@ -33,3 +33,5 @@ var ExecuteButton = React.createClass({
 		);
 	}
 });
+
+module.exports = ExecuteButton;

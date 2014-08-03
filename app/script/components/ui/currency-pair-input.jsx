@@ -1,6 +1,7 @@
-/**
-* @jsx React.DOM
-*/
+"use strict"
+
+var React = require('react/addons');
+var $ = require('jquery/dist/jquery.min');
 
 var CurrencyPairInput = React.createClass({
 
@@ -70,3 +71,5 @@ var CurrencyPairInput = React.createClass({
 		this.setState({currencyPairInputNeedsFocus: false});
 	}
 });
+
+module.exports = CurrencyPairInput;
