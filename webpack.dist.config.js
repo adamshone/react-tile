@@ -11,13 +11,13 @@ var webpack = require('webpack');
 module.exports = {
   output: {
     publicPatch: 'dist/',
-    path: 'dist/scripts/',
+    path: 'dist/script/',
     filename: 'main.js'
   },
 
   debug: false,
   devtool: false,
-  entry: './src/scripts/components/<%= pkg.mainInput %>.jsx',
+  entry: './app/script/components/<%= pkg.mainInput %>.jsx',
 
   stats: {
     colors: true,
