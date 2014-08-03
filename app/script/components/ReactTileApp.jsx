@@ -7,7 +7,6 @@ var ReactTransitionGroup = React.addons.TransitionGroup;
 (window !== window.top ? window.top : window).React = React;
 
 // CSS
-require('../../style/vendor/base.css');
 require('../../style/main.css');
 
 // Imports
