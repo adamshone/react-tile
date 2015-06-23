@@ -7,6 +7,7 @@ var ReactTransitionGroup = React.addons.TransitionGroup;
 (window !== window.top ? window.top : window).React = React;
 
 // CSS
+require('../../style/vendor/normalize.css');
 require('../../style/main.css');
 
 // Imports
@@ -22,7 +23,7 @@ var supportedCurrencyPairs = messageService.getSupportedCurrencyPairs();
 for(var i=0; i<supportedCurrencyPairs.length; i++) {
   var currencyPair = supportedCurrencyPairs[i % supportedCurrencyPairs.length];
   var child = document.createElement("SPAN");
-  React.renderComponent(
+  React.render(
     <Tile currencyPair={currencyPair} messageService={messageService}/>,
     child
   );
